@@ -85,7 +85,8 @@ class client:
     def do_end_turn(self):
         params = {'key': self.key} 
         r = requests.post(self.end_turn_url, params)
-        print(r.json())
+        if r['error'] != None:
+            print(r)
     
     
 
@@ -99,16 +100,15 @@ handle1 = client('http://localhost:8080', 'secret1', 'my man')
 handle2 = client('http://localhost:8080', 'secret2', 'twomad 360')
 handle3 = client('http://localhost:8080', 'secret3', 'trump for 2020')
 handle1.get_board()
-# print(handle.get_cities(0))
-# print(handle.get_armies(0))
-# print(handle.get_workers(0))
-# print(handle.get_players(0))
-# print(handle.get_resources(0))
-# print(handle.get_turn())
+# print(handle0.get_cities(0))
+# print(handle0.get_armies(0))
+# print(handle0.get_workers(0))
+# print(handle0.get_players(0))
+# print(handle0.get_resources(0))
+# print(handle0.get_turn())
 
-running = True
-for i in range(10):
-    handle0.do_end_turn()
-    handle1.do_end_turn()
-    handle2.do_end_turn()
-    handle3.do_end_turn()
+
+
+
+    
+
