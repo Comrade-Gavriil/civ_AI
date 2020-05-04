@@ -15,8 +15,6 @@ class ai:
     def make_move(self):
         production = self.client.get_resources(self.id)['production'] 
         city_loc = self.client.get_cities(self.id)[0]
-        x = city_loc['x']
-        y = city_loc['y']
 
         if production >= 8:
             self.client.do_produce(1, x,y)
