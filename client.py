@@ -17,7 +17,8 @@ class client:
         self.player_index_url = server_url + '/api/player_index'
         self.produce_url = server_url + '/api/produce'
         self.technology_url = server_url + '/api/technology'
-        self.technology_url = server_url + '/api/technology'
+        self.move_worker_url = server_url + '/api/move_worker'
+        self.move_army_url = server_url + '/api/move_army'
         self.end_turn_url = server_url + '/api/end_turn'
         self.key = key
 
@@ -80,7 +81,28 @@ class client:
     def do_produce(self, unit_type, loc_x , loc_y):
         params = {'key': self.key, 'type': unit_type, 'x': loc_x, 'y':loc_y} 
         r = requests.post(self.produce_url, params)
-        print(r.json())
+        if r['error'] != None:
+            print(r)
+
+
+    def do_technology(self, tek_tpye):
+        params = {'key': self.key, 'type': tek_tpye} 
+        r = requests.post(self.technology_url, params)
+        if r['error'] != None:
+            print(r)
+    
+
+    def do_move_worker(self, scr_x, scr_y,dst_x,dst_y):
+        params = {'key': self.key, 'srcX': scr_x, 'srcY': scr_y, 'dstX': dst_x, 'dstY': dst_y } 
+        r = requests.post(self.move_worker_url, params)
+        if r['error'] != None:
+            print(r)
+        
+    def do_move_army(self, scr_x, scr_y,dst_x,dst_y):
+        params = {'key': self.key, 'srcX': scr_x, 'srcY': scr_y, 'dstX': dst_x, 'dstY': dst_y } 
+        r = requests.post(self.move_army_url, params)
+        if r['error'] != None:
+            print(r)
     
     def do_end_turn(self):
         params = {'key': self.key} 
@@ -95,11 +117,11 @@ class client:
 
 
 
-handle0 = client('http://localhost:8080', 'secret0', 'the_big_yeeter')
-handle1 = client('http://localhost:8080', 'secret1', 'my man')
-handle2 = client('http://localhost:8080', 'secret2', 'twomad 360')
-handle3 = client('http://localhost:8080', 'secret3', 'trump for 2020')
-handle1.get_board()
+# handle0 = client('http://localhost:8080', 'secret0', 'the_big_yeeter')
+# handle1 = client('http://localhost:8080', 'secret1', 'my man')
+# handle2 = client('http://localhost:8080', 'secret2', 'twomad 360')
+# handle3 = client('http://localhost:8080', 'secret3', 'trump for 2020')
+# handle1.get_board()
 # print(handle0.get_cities(0))
 # print(handle0.get_armies(0))
 # print(handle0.get_workers(0))
