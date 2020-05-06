@@ -80,33 +80,33 @@ class client:
     
     def do_produce(self, unit_type, loc_x , loc_y):
         params = {'key': self.key, 'type': unit_type, 'x': loc_x, 'y':loc_y} 
-        r = requests.post(self.produce_url, params)
+        r = requests.post(self.produce_url, params).json()
         if r['error'] != None:
             print(r)
 
 
     def do_technology(self, tek_tpye):
         params = {'key': self.key, 'type': tek_tpye} 
-        r = requests.post(self.technology_url, params)
+        r = requests.post(self.technology_url, params).json()
         if r['error'] != None:
             print(r)
     
 
     def do_move_worker(self, scr_x, scr_y,dst_x,dst_y):
         params = {'key': self.key, 'srcX': scr_x, 'srcY': scr_y, 'dstX': dst_x, 'dstY': dst_y } 
-        r = requests.post(self.move_worker_url, params)
+        r = requests.post(self.move_worker_url, params).json()
         if r['error'] != None:
             print(r)
         
     def do_move_army(self, scr_x, scr_y,dst_x,dst_y):
         params = {'key': self.key, 'srcX': scr_x, 'srcY': scr_y, 'dstX': dst_x, 'dstY': dst_y } 
-        r = requests.post(self.move_army_url, params)
+        r = requests.post(self.move_army_url, params).json()
         if r['error'] != None:
             print(r)
     
     def do_end_turn(self):
         params = {'key': self.key} 
-        r = requests.post(self.end_turn_url, params)
+        r = requests.post(self.end_turn_url, params).json()
         if r['error'] != None:
             print(r)
     
